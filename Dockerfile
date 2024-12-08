@@ -11,5 +11,5 @@ ENV MONGO_INITDB_ROOT_PASSWORD=admin
 # Definir el entorno para la base de datos que va a ser configurada
 ENV MONGO_INITDB_DATABASE=smartpot
 
-# La imagen de MongoDB ejecutará automáticamente todos los scripts
-# en /docker-entrypoint-initdb.d/ al iniciar por primera vez el contenedor
+# Exponer el puerto de MongoDB
+EXPOSE 27017
