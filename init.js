@@ -1,7 +1,29 @@
-db = db.getSiblingDB('smartpot');  // Seleccionar la base de datos 'smartpot'
+//Creaciòn de usuario root
+db = db.getSiblingDB('admin');
+
+db.createUser({
+    user: 'admin',
+    pwd: 'admin',
+    roles: [
+        { role: 'root', db: 'admin' }
+    ]
+});
+
+//Inicializaciòn de DB
+db = db.getSiblingDB('smartpot');
 
 db.createCollection('usuarios');
 db.usuarios.insertMany([
+    {
+        "_id": ObjectId("672811d1c78d172fd8a89775"),
+        "name": "Pedro",
+        "lastname": "Perez",
+        "email": "juan.perez@example.com",
+        "create_at": new ISODate("2024-11-08T09:15:20.000Z"),
+        "password": "$2a$12$4n181KR5etTwn1Qp1ka2je79lrxXYhVuUa3kqvQfQPDx1V2LcCTKu",
+        "role": "USER",
+        "_class": "smartpot.com.api.Models.Entity.User"
+    },
     {
         "_id": ObjectId("672811d1c78d172fd8a89776"),
         "name": "Ana",
