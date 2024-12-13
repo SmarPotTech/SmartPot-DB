@@ -1,54 +1,18 @@
-db = db.getSiblingDB('smartpot');  // Seleccionar la base de datos 'smartpot'
+db = db.getSiblingDB('smartpot');
 
 db.createCollection('usuarios');
 db.usuarios.insertMany([
     {
-        "_id": ObjectId("672811d1c78d172fd8a89776"),
-        "name": "Ana",
-        "lastname": "Gonzalez",
-        "email": "ana.gonzalez@example.com",
-        "create_at": new ISODate("2024-11-08T09:15:20.000Z"),
-        "password": "$2a$12$A9cXEayYw0evsEq7uAV8w.MI7B6r4I5EVkgErY0gNz8F5cmMb5tdu",
-        "role": "USER",
-        "_class": "smartpot.com.api.Models.Entity.User"
-    },
-    {
-        "_id": ObjectId("672811d1c78d172fd8a89777"),
-        "name": "Carlos",
-        "lastname": "Martinez",
-        "email": "carlos.martinez@example.com",
-        "create_at": new ISODate("2024-11-09T10:30:25.000Z"),
-        "password": "$2a$12$wLkZmQeE6oSkIAkC3VtnKnggsJ7TXkQdOdxZu5VgxlYqu8dT9llp2",
-        "role": "USER",
-        "_class": "smartpot.com.api.Models.Entity.User"
-    },
-    {
-        "_id": ObjectId("672811d1c78d172fd8a89778"),
-        "name": "Laura",
-        "lastname": "Sánchez",
-        "email": "laura.sanchez@example.com",
-        "create_at": new ISODate("2024-11-10T11:45:10.000Z"),
-        "password": "$2a$12$PvB12SgZqR8Se7w4gzJWTeMN5G2SlX1FFmZZIkAq1s4bM04Y56Gcu",
-        "role": "ADMIN",
-        "_class": "smartpot.com.api.Models.Entity.User"
-    },
-    {
-        "_id": ObjectId("672811d1c78d172fd8a89779"),
-        "name": "Felipe",
-        "lastname": "Ramírez",
-        "email": "felipe.ramirez@example.com",
-        "create_at": new ISODate("2024-11-11T12:50:45.000Z"),
-        "password": "$2a$12$ZBTe0FT2uD8Tg42Zywg6jXztLZyhtXMZyMIWh2ZV34ZzYldE51JjW",
-        "role": "USER",
-        "_class": "smartpot.com.api.Models.Entity.User"
-    },
-    {
-        "_id": ObjectId("672811d1c78d172fd8a89780"),
-        "name": "Luis",
-        "lastname": "Fernandez",
-        "email": "luis.fernandez@example.com",
-        "create_at": new ISODate("2024-11-12T13:55:50.000Z"),
-        "password": "$2a$12$8Hsbk0fVuCpK7.B7XihZXHqZb5LvM9ZD9F1uZGQ4TZTfYpFv5uZMy",
+        "_id": {
+            "$oid": "672811d1c78d172fd8a89775"
+        },
+        "name": "Pedro",
+        "lastname": "Perez",
+        "email": "juan.perez@example.com",
+        "create_at": {
+            "$date": "2024-11-07T00:20:07.973Z"
+        },
+        "password": "$2a$12$4n181KR5etTwn1Qp1ka2je79lrxXYhVuUa3kqvQfQPDx1V2LcCTKu",
         "role": "USER",
         "_class": "smartpot.com.api.Models.Entity.User"
     }
@@ -57,38 +21,14 @@ db.usuarios.insertMany([
 db.createCollection('cultivos');
 db.cultivos.insertMany([
     {
-        "_id": ObjectId("672af29fed31ed63a0064115"),
-        "status": "Severe_deterioration",
-        "type": "TOMATO",
-        "user": ObjectId("672811d1c78d172fd8a89776"),  // Referencia al usuario "Ana Gonzalez"
-        "_class": "smartpot.com.api.Models.Entity.Crop"
-    },
-    {
-        "_id": ObjectId("672af29fed31ed63a0064116"),
-        "status": "Moderate_deterioration",
-        "type": "LETTUCE",
-        "user": ObjectId("672811d1c78d172fd8a89777"),  // Referencia al usuario "Carlos Martinez"
-        "_class": "smartpot.com.api.Models.Entity.Crop"
-    },
-    {
-        "_id": ObjectId("672af29fed31ed63a0064117"),
+        "_id": {
+            "$oid": "672ebd43e9227768a15b11df"
+        },
         "status": "Excellent",
-        "type": "LETTUCE",
-        "user": ObjectId("672811d1c78d172fd8a89778"),  // Referencia al usuario "Laura Sanchez"
-        "_class": "smartpot.com.api.Models.Entity.Crop"
-    },
-    {
-        "_id": ObjectId("672af29fed31ed63a0064118"),
-        "status": "Perfect_plant",
         "type": "TOMATTO",
-        "user": ObjectId("672811d1c78d172fd8a89779"),  // Referencia al usuario "Felipe Ramirez"
-        "_class": "smartpot.com.api.Models.Entity.Crop"
-    },
-    {
-        "_id": ObjectId("672af29fed31ed63a0064119"),
-        "status": "Moderate_health",
-        "type": "TOMATTO",
-        "user": ObjectId("672811d1c78d172fd8a89780"),  // Referencia al usuario "Luis Fernandez"
+        "user": {
+            "$oid": "672811d1c78d172fd8a89775"
+        },
         "_class": "smartpot.com.api.Models.Entity.Crop"
     }
 ]);
@@ -97,43 +37,25 @@ db.cultivos.insertMany([
 db.createCollection('comandos');
 db.comandos.insertMany([
     {
-        "_id": ObjectId("507f1f77bcf86cd799439014"),
         "commandType": "ACTIVATE_WATER_PUMP",
         "status": "EXECUTED",
-        "dateCreated": new ISODate("2024-11-06T15:20:00.100Z"),
-        "crop": ObjectId("672af29fed31ed63a0064115"),
+        "dateCreated": { "$date": "2024-11-05T15:00:40.100Z" },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
         "_class": "smartpot.com.api.Models.Entity.Command"
     },
     {
-        "_id": ObjectId("507f1f77bcf86cd799439015"),
-        "commandType": "ACTIVATE_LIGHT",
+        "commandType": "ACTIVATE_WATER_PUMP",
         "status": "EXECUTED",
-        "dateCreated": new ISODate("2024-11-07T16:30:12.200Z"),
-        "crop": ObjectId("672af29fed31ed63a0064116"),
+        "dateCreated": { "$date": "2024-11-05T15:00:40.100Z" },
+        "response": "SUCCESSFUL",
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
         "_class": "smartpot.com.api.Models.Entity.Command"
     },
     {
-        "_id": ObjectId("507f1f77bcf86cd799439016"),
         "commandType": "ACTIVATE_WATER_PUMP",
         "status": "PENDING",
-        "dateCreated": new ISODate("2024-11-08T17:40:25.300Z"),
-        "crop": ObjectId("672af29fed31ed63a0064117"),
-        "_class": "smartpot.com.api.Models.Entity.Command"
-    },
-    {
-        "_id": ObjectId("507f1f77bcf86cd799439017"),
-        "commandType": "ACTIVATE_WATER_PUMP",
-        "status": "EXECUTED",
-        "dateCreated": new ISODate("2024-11-09T18:50:40.400Z"),
-        "crop": ObjectId("672af29fed31ed63a0064118"),
-        "_class": "smartpot.com.api.Models.Entity.Command"
-    },
-    {
-        "_id": ObjectId("507f1f77bcf86cd799439018"),
-        "commandType": "ACTIVATE_WATER_PUMP",
-        "status": "PENDING",
-        "dateCreated": new ISODate("2024-11-10T19:00:50.500Z"),
-        "crop": ObjectId("672af29fed31ed63a0064119"),
+        "dateCreated": { "$date": "2024-11-06T04:17:57.398Z" },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
         "_class": "smartpot.com.api.Models.Entity.Command"
     }
 ]);
@@ -142,127 +64,729 @@ db.comandos.insertMany([
 db.createCollection('notificaciones');
 db.notificaciones.insertMany([
     {
-        "_id": ObjectId("672913ada70359bc7970ea56"),
-        "message": "El pH del agua está fuera de rango.",
+        "message": "Estamos al pendiente de tu planta.",
         "type": "alerta",
-        "date": new ISODate("2024-11-07T05:20:10.100Z"),
-        "_class": "smartpot.com.api.Models.Entity.Notification",
-        "user_id": ObjectId("672811d1c78d172fd8a89776")
-    },
-    {
-        "_id": ObjectId("672913ada70359bc7970ea57"),
-        "message": "La humedad del suelo ha aumentado al 80%.",
-        "type": "información",
-        "date": new ISODate("2024-11-08T06:25:20.200Z"),
-        "_class": "smartpot.com.api.Models.Entity.Notification",
-        "user_id": ObjectId("672811d1c78d172fd8a89777")
-    },
-    {
-        "_id": ObjectId("672913ada70359bc7970ea58"),
-        "message": "Temperatura elevada en el invernadero.",
-        "type": "alerta",
-        "date": new ISODate("2024-11-09T07:30:30.300Z"),
-        "_class": "smartpot.com.api.Models.Entity.Notification",
-        "user_id": ObjectId("672811d1c78d172fd8a89778")
-    },
-    {
-        "_id": ObjectId("672913ada70359bc7970ea59"),
-        "message": "El cultivo de lechuga está listo para la cosecha.",
-        "type": "información",
-        "date": new ISODate("2024-11-10T08:35:40.400Z"),
-        "_class": "smartpot.com.api.Models.Entity.Notification",
-        "user_id": ObjectId("672811d1c78d172fd8a89779")
-    },
-    {
-        "_id": ObjectId("672913ada70359bc7970ea60"),
-        "message": "Se alcanzó la temperatura óptima para el cultivo de espinaca.",
-        "type": "información",
-        "date": new ISODate("2024-11-11T09:40:50.500Z"),
-        "_class": "smartpot.com.api.Models.Entity.Notification",
-        "user_id": ObjectId("672811d1c78d172fd8a89780")
-    }
-]);
-
-db.createCollection('registros');
-db.registros.insertMany([
-    {
-        "_id": ObjectId("672bb5fa34615e37497f4eaf"),
-        "date": new ISODate("2024-11-07T20:15:00.100Z"),
-        "measures": {
-            "atmosphere": 21.0,
-            "brightness": 750,
-            "temperature": 24.0,
-            "ph": 7.0,
-            "tds": 440,
-            "humidity": 70
+        "date": {
+            "$date": "2024-11-06T04:13:08.902Z"
         },
-        "crop": ObjectId("672af29fed31ed63a0064115"),
-        "_class": "smartpot.com.api.Models.Entity.History"
-    },
-    {
-        "_id": ObjectId("672bb5fa34615e37497f4eb0"),
-        "date": new ISODate("2024-11-08T21:25:10.200Z"),
-        "measures": {
-            "atmosphere": 22.0,
-            "brightness": 780,
-            "temperature": 23.5,
-            "ph": 6.5,
-            "tds": 460,
-            "humidity": 72
-        },
-        "crop": ObjectId("672af29fed31ed63a0064116"),
-        "_class": "smartpot.com.api.Models.Entity.History"
-    },
-    {
-        "_id": ObjectId("672bb5fa34615e37497f4eb1"),
-        "date": new ISODate("2024-11-09T22:35:20.300Z"),
-        "measures": {
-            "atmosphere": 23.0,
-            "brightness": 800,
-            "temperature": 22.0,
-            "ph": 7.0,
-            "tds": 470,
-            "humidity": 75
-        },
-        "crop": ObjectId("672af29fed31ed63a0064117"),
-        "_class": "smartpot.com.api.Models.Entity.History"
-    },
-    {
-        "_id": ObjectId("672bb5fa34615e37497f4eb2"),
-        "date": new ISODate("2024-11-10T23:45:30.400Z"),
-        "measures": {
-            "atmosphere": 22.5,
-            "brightness": 790,
-            "temperature": 21.0,
-            "ph": 6.8,
-            "tds": 450,
-            "humidity": 80
-        },
-        "crop": ObjectId("672af29fed31ed63a0064118"),
-        "_class": "smartpot.com.api.Models.Entity.History"
-    },
-    {
-        "_id": ObjectId("672bb5fa34615e37497f4eb3"),
-        "date": new ISODate("2024-11-11T00:00:40.500Z"),
-        "measures": {
-            "atmosphere": 20.0,
-            "brightness": 760,
-            "temperature": 23.5,
-            "ph": 7.0,
-            "tds": 440,
-            "humidity": 85
-        },
-        "crop": ObjectId("672af29fed31ed63a0064119"),
-        "_class": "smartpot.com.api.Models.Entity.History"
+        "_class": "smarpot.com.api.Models.Entity.Notification",
+        "user_id": {
+            "$oid": "672ebd43e9227768a15b11df"
+        }
     }
 ]);
 
 db.createCollection('sesiones');
 db.sessions.insertMany([
     {
-        "_id": ObjectId("672b9609f11f22caf99d7549"),
-        "registration": new ISODate("2023-11-05T12:30:00.000Z"),
-        "user": "00000000cc9f266f96d89cf8",
+        "registration": "2023-11-05T12:30:00.000Z",
+        "user": "672811d1c78d172fd8a89775",
         "_class": "smartpot.com.api.Models.Entity.Session"
+    }
+]);
+
+db.createCollection('registros');
+db.registros.insertMany([
+    {
+        "date": { "$date": "2024-11-01T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 18,
+            "brightness": 1270,
+            "temperature": 24,
+            "ph": 7,
+            "tds": 10,
+            "humidity": 10
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-02T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 18.5,
+            "brightness": 1273,
+            "temperature": 24.5,
+            "ph": 7.1,
+            "tds": 10.5,
+            "humidity": 12
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-03T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 19,
+            "brightness": 1275,
+            "temperature": 25,
+            "ph": 7.2,
+            "tds": 11,
+            "humidity": 14
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-04T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 19.5,
+            "brightness": 1278,
+            "temperature": 25.5,
+            "ph": 7.3,
+            "tds": 11.5,
+            "humidity": 16
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-05T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 20,
+            "brightness": 1280,
+            "temperature": 26,
+            "ph": 7.4,
+            "tds": 12,
+            "humidity": 18
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-06T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 20.5,
+            "brightness": 1283,
+            "temperature": 26.5,
+            "ph": 7.5,
+            "tds": 12.5,
+            "humidity": 20
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-07T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 21,
+            "brightness": 1285,
+            "temperature": 27,
+            "ph": 7.6,
+            "tds": 13,
+            "humidity": 22
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-08T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 21.5,
+            "brightness": 1288,
+            "temperature": 27.5,
+            "ph": 7.7,
+            "tds": 13.5,
+            "humidity": 24
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-09T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 22,
+            "brightness": 1290,
+            "temperature": 28,
+            "ph": 7.8,
+            "tds": 14,
+            "humidity": 26
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-10T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 22.5,
+            "brightness": 1293,
+            "temperature": 28.5,
+            "ph": 7.9,
+            "tds": 14.5,
+            "humidity": 28
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-11T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 23,
+            "brightness": 1295,
+            "temperature": 29,
+            "ph": 8,
+            "tds": 15,
+            "humidity": 30
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-12T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 23.5,
+            "brightness": 1298,
+            "temperature": 29.5,
+            "ph": 8.1,
+            "tds": 15.5,
+            "humidity": 32
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-13T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 24,
+            "brightness": 1300,
+            "temperature": 30,
+            "ph": 8.2,
+            "tds": 16,
+            "humidity": 34
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-14T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 24.5,
+            "brightness": 1303,
+            "temperature": 30.5,
+            "ph": 8.3,
+            "tds": 16.5,
+            "humidity": 36
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-15T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 25,
+            "brightness": 1305,
+            "temperature": 31,
+            "ph": 8.4,
+            "tds": 17,
+            "humidity": 38
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-16T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 25.5,
+            "brightness": 1308,
+            "temperature": 31.5,
+            "ph": 8.5,
+            "tds": 17.5,
+            "humidity": 40
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-17T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 26,
+            "brightness": 1310,
+            "temperature": 32,
+            "ph": 8.6,
+            "tds": 18,
+            "humidity": 42
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-18T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 26.5,
+            "brightness": 1313,
+            "temperature": 32.5,
+            "ph": 8.7,
+            "tds": 18.5,
+            "humidity": 44
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-19T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 27,
+            "brightness": 1315,
+            "temperature": 33,
+            "ph": 8.8,
+            "tds": 19,
+            "humidity": 46
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-20T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 27.5,
+            "brightness": 1318,
+            "temperature": 33.5,
+            "ph": 8.9,
+            "tds": 19.5,
+            "humidity": 48
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-21T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 28,
+            "brightness": 1320,
+            "temperature": 34,
+            "ph": 9,
+            "tds": 20,
+            "humidity": 50
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-22T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 28.5,
+            "brightness": 1323,
+            "temperature": 34.5,
+            "ph": 9.1,
+            "tds": 20.5,
+            "humidity": 52
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-23T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 29,
+            "brightness": 1325,
+            "temperature": 35,
+            "ph": 9.2,
+            "tds": 21,
+            "humidity": 54
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-24T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 29.5,
+            "brightness": 1328,
+            "temperature": 35.5,
+            "ph": 9.3,
+            "tds": 21.5,
+            "humidity": 56
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-25T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 30,
+            "brightness": 1330,
+            "temperature": 36,
+            "ph": 9.4,
+            "tds": 22,
+            "humidity": 58
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-26T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 30.5,
+            "brightness": 1333,
+            "temperature": 36.5,
+            "ph": 9.5,
+            "tds": 22.5,
+            "humidity": 60
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-27T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 31,
+            "brightness": 1335,
+            "temperature": 37,
+            "ph": 9.6,
+            "tds": 23,
+            "humidity": 62
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-28T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 31.5,
+            "brightness": 1338,
+            "temperature": 37.5,
+            "ph": 9.7,
+            "tds": 23.5,
+            "humidity": 64
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-29T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 32,
+            "brightness": 1340,
+            "temperature": 38,
+            "ph": 9.8,
+            "tds": 24,
+            "humidity": 66
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-30T00:00:00.000Z" },
+        "measures": {
+            "atmosphere": 32.5,
+            "brightness": 1343,
+            "temperature": 38.5,
+            "ph": 9.9,
+            "tds": 24.5,
+            "humidity": 68
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-01T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 18.2,
+            "brightness": 1272,
+            "temperature": 24.3,
+            "ph": 7.05,
+            "tds": 10.2,
+            "humidity": 11
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-02T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 19,
+            "brightness": 1275,
+            "temperature": 24.8,
+            "ph": 7.15,
+            "tds": 10.7,
+            "humidity": 13
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-03T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 19.5,
+            "brightness": 1277,
+            "temperature": 25.2,
+            "ph": 7.25,
+            "tds": 11.2,
+            "humidity": 15
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-04T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 20,
+            "brightness": 1280,
+            "temperature": 25.8,
+            "ph": 7.35,
+            "tds": 11.8,
+            "humidity": 17
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-05T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 20.6,
+            "brightness": 1283,
+            "temperature": 26.2,
+            "ph": 7.45,
+            "tds": 12.3,
+            "humidity": 19
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-06T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 21,
+            "brightness": 1286,
+            "temperature": 26.7,
+            "ph": 7.55,
+            "tds": 12.8,
+            "humidity": 21
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-07T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 21.5,
+            "brightness": 1289,
+            "temperature": 27.1,
+            "ph": 7.65,
+            "tds": 13.3,
+            "humidity": 23
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-08T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 22,
+            "brightness": 1292,
+            "temperature": 27.5,
+            "ph": 7.75,
+            "tds": 13.8,
+            "humidity": 25
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-09T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 22.5,
+            "brightness": 1295,
+            "temperature": 28,
+            "ph": 7.85,
+            "tds": 14.3,
+            "humidity": 27
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-10T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 23,
+            "brightness": 1297,
+            "temperature": 28.4,
+            "ph": 7.95,
+            "tds": 14.8,
+            "humidity": 29
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-11T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 23.5,
+            "brightness": 1300,
+            "temperature": 28.9,
+            "ph": 8,
+            "tds": 15.2,
+            "humidity": 31
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-12T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 24,
+            "brightness": 1303,
+            "temperature": 29.2,
+            "ph": 8.05,
+            "tds": 15.7,
+            "humidity": 33
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-13T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 24.5,
+            "brightness": 1306,
+            "temperature": 29.6,
+            "ph": 8.15,
+            "tds": 16.2,
+            "humidity": 35
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-14T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 25,
+            "brightness": 1308,
+            "temperature": 30,
+            "ph": 8.25,
+            "tds": 16.7,
+            "humidity": 37
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-15T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 25.5,
+            "brightness": 1311,
+            "temperature": 30.4,
+            "ph": 8.35,
+            "tds": 17.2,
+            "humidity": 39
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-16T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 26,
+            "brightness": 1313,
+            "temperature": 30.9,
+            "ph": 8.45,
+            "tds": 17.7,
+            "humidity": 41
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-17T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 26.5,
+            "brightness": 1316,
+            "temperature": 31.3,
+            "ph": 8.55,
+            "tds": 18.2,
+            "humidity": 43
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-18T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 27,
+            "brightness": 1318,
+            "temperature": 31.7,
+            "ph": 8.65,
+            "tds": 18.8,
+            "humidity": 45
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-19T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 27.5,
+            "brightness": 1320,
+            "temperature": 32.1,
+            "ph": 8.75,
+            "tds": 19.3,
+            "humidity": 47
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-20T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 28,
+            "brightness": 1323,
+            "temperature": 32.5,
+            "ph": 8.85,
+            "tds": 19.8,
+            "humidity": 49
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-21T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 28.5,
+            "brightness": 1325,
+            "temperature": 33,
+            "ph": 8.95,
+            "tds": 20.3,
+            "humidity": 51
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-22T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 29,
+            "brightness": 1328,
+            "temperature": 33.4,
+            "ph": 9.05,
+            "tds": 20.8,
+            "humidity": 53
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-23T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 29.5,
+            "brightness": 1330,
+            "temperature": 33.9,
+            "ph": 9.15,
+            "tds": 21.3,
+            "humidity": 55
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
+    },
+    {
+        "date": { "$date": "2024-11-24T12:00:00.000Z" },
+        "measures": {
+            "atmosphere": 30,
+            "brightness": 1333,
+            "temperature": 34.3,
+            "ph": 9.25,
+            "tds": 21.8,
+            "humidity": 57
+        },
+        "crop": { "$oid": "672ebd43e9227768a15b11df" },
+        "_class": "smartpot.com.api.Models.Entity.History"
     }
 ]);
