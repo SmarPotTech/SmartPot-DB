@@ -18,7 +18,7 @@ db.usuarios.insertMany([
         "lastname": "Perez",
         "email": "juan.perez@example.com",
         "create_at": ISODate("2024-11-07T00:20:07.973Z"),
-        "password": "$2a$12$4n181KR5etTwn1Qp1ka2je79lrxXYhVuUa3kqvQfQPDx1V2LcCTKu",  // Encriptado
+        "password": "$2a$12$4n181KR5etTwn1Qp1ka2je79lrxXYhVuUa3kqvQfQPDx1V2LcCTKu",
         "role": "USER",
         "_class": "smartpot.com.api.Models.Entity.User"
     }
@@ -30,7 +30,7 @@ db.cultivos.insertMany([
         "_id": ObjectId("672ebd43e9227768a15b11df"),
         "status": "Excellent",
         "type": "TOMATTO",
-        "user": ObjectId("672811d1c78d172fd8a89775"),  // Referencia al usuario de la colección usuarios
+        "user": ObjectId("672811d1c78d172fd8a89775"),
         "_class": "smartpot.com.api.Models.Entity.Crop"
     }
 ]);
